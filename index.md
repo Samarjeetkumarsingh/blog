@@ -1,5 +1,7 @@
-Here you can say lots of fun things about your site.
+My blog contents will be on the following topics:
 
-Maybe say a some things about yourself.
+1. Materials Engineering
+2. GATE Exam
+3. Maths
 
-Or maybe what you plan to blog about.
+
