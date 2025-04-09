@@ -1,13 +1,12 @@
-<!-- Navigation Bar -->
 <nav class="navbar">
   <div class="navbar-container">
     <!-- Logo/Brand -->
     <div class="navbar-brand">
-      <a href="/">
+      <a href="{{ '/' | relative_url }}">
         <svg class="logo-icon" viewBox="0 0 24 24">
-          <path fill="#4fc3f7" d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+          <path fill="var(--accent)" d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
         </svg>
-        <span class="brand-name">EduTech<span class="brand-highlight">Blog</span></span>
+        <span class="brand-name">{{ site.title }}<span class="brand-highlight">Blog</span></span>
       </a>
     </div>
 
@@ -16,32 +15,34 @@
       <span class="toggle-icon"></span>
     </button>
 
-    <!-- Navigation Links -->
+    <!-- Navigation Links - Dynamic for Jekyll -->
     <div class="navbar-menu">
       <ul class="navbar-links">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/posts">Articles</a></li>
-        <li><a href="/courses">Courses</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+        {% for item in site.data.navigation %}
+          <li>
+            <a href="{{ item.link | relative_url }}" 
+               class="{% if page.url == item.link %}active{% endif %}">
+              {{ item.name }}
+            </a>
+          </li>
+        {% endfor %}
       </ul>
 
-      <!-- Search and Auth -->
+      <!-- Search Button -->
       <div class="navbar-actions">
         <button class="search-btn" aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </button>
-        <a href="/login" class="auth-btn">Sign In</a>
       </div>
     </div>
   </div>
 
-  <!-- Search Bar (hidden by default) -->
+  <!-- Search Bar -->
   <div class="search-container">
-    <form class="search-form">
-      <input type="text" placeholder="Search articles, courses..." class="search-input">
+    <form class="search-form" action="{{ '/search' | relative_url }}">
+      <input type="text" name="q" placeholder="Search articles..." class="search-input">
       <button type="submit" class="search-submit">Search</button>
     </form>
   </div>
