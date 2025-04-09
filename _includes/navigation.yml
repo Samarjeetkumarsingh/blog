@@ -1,0 +1,11 @@
+- name: "Home"
+  link: "/"
+  
+- name: "Articles"
+  link: "/posts"
+  
+- name: "Courses"
+  link: "/courses"
+  
+- name: "About"
+  link: "/about"
